@@ -16,7 +16,7 @@
       box-sizing: border-box;
     }
 
-    /* The ENTIRE page uses the hero background image — from top to bottom, no breaks */
+    
     body {
       /* Same background image used across whole document */
       background-image: url("./images/hero.png");
@@ -39,8 +39,7 @@
       font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
     
-    /* Ensure no element forces a black background override */
-    /* Overlay only for hero text area, NOT for whole sections */
+   
     
     /* NAVBAR - stays transparent but readable */
     .navbar {
@@ -59,14 +58,14 @@
       border-color: rgba(255,255,255,0.5);
     }
     
-    /* HERO SECTION - positioned but background is already on body, so we just add text overlay */
+    
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
       padding-left: 5%;
       padding-top: 70px;
-      /* No background image here — it's inherited from body */
+      
       background-color: transparent;
     }
     
@@ -81,7 +80,7 @@
     
     /* PRODUCTS SECTION — NO BLACK BACKGROUND */
     .products-section {
-      background-color: transparent !important;  /* critical: remove black bg */
+      background-color: transparent !important;  
       padding: 80px 0;
       position: relative;
       z-index: 2;
@@ -154,8 +153,8 @@
       backdrop-filter: blur(3px);
     }
     
-    /* footer content layout: center name + right 'About Us' using flex modern approach,
-       but keep the original design intent with no black background */
+    /* footer content layout: center name + right 'About Us',
+       */
     .footer .container {
       position: relative;
       display: flex;
@@ -213,7 +212,7 @@
       background-color: transparent;
     }
     
-    /* but we keep the card background translucent to maintain readability */
+    
     .card-body {
       background-color: transparent;
     }
@@ -298,7 +297,7 @@
       <!-- Product 3: Gari -->
       <div class="col-md-4">
         <div class="card text-white">
-          <img src="images/gari.jpg" class="card-img-top" alt="Gari">
+          <img src="images/gari.JPG" class="card-img-top" alt="Gari">
           <div class="card-body text-center">
             <h5 class="card-title">Gari</h5>
             <p class="card-text">$8.99</p>
