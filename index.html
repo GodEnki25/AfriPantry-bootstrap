@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AfriPantry - Authentic African Pantry Essentials</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* RESET & GLOBAL — SINGLE BACKGROUND FOR ENTIRE PAGE */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* The ENTIRE page uses the hero background image — from top to bottom, no breaks */
+    body {
+      /* Same background image used across whole document */
+      background-image: url("./images/hero.png");
+      background-size: 100% auto;
+      background-repeat: repeat-y;
+      background-position: top center;
+      background-attachment: scroll;
+      background-color: #1a1a1a;       
+      
+
+
+      
+      
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      
+      /* Text base color: white for readability */
+      color: white;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    
+    /* Ensure no element forces a black background override */
+    /* Overlay only for hero text area, NOT for whole sections */
+    
+    /* NAVBAR - stays transparent but readable */
+    .navbar {
+      z-index: 10;
+      background-color: transparent !important;  /* no black bar */
+      backdrop-filter: none;
+    }
+    
+    .navbar .nav-link, 
+    .navbar-brand {
+      color: white !important;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .navbar-toggler {
+      border-color: rgba(255,255,255,0.5);
+    }
+    
+    /* HERO SECTION - positioned but background is already on body, so we just add text overlay */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-left: 5%;
+      padding-top: 70px;
+      /* No background image here — it's inherited from body */
+      background-color: transparent;
+    }
+    
+    /* Overlay only for the text card — not for entire section */
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.65);
+      padding: 3rem;
+      border-radius: 16px;
+      max-width: 500px;
+      backdrop-filter: blur(2px);
+    }
+    
+    /* PRODUCTS SECTION — NO BLACK BACKGROUND */
+    .products-section {
+      background-color: transparent !important;  /* critical: remove black bg */
+      padding: 80px 0;
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* Section heading remains readable */
+    .products-section h2 {
+      color: white;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    
+    /* Cards — semi-transparent dark background but NOT solid black, blends with underlying image */
+    .card {
+      background-color: rgba(10, 10, 10, 0.82);
+      backdrop-filter: blur(4px);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
+    
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 45px rgba(0, 0, 0, 0.7);
+      background-color: rgba(15, 15, 15, 0.88);
+    }
+    
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+    .card-title {
+      color: #f8f9fa;
+      font-weight: 600;
+    }
+    
+    .card-text {
+      color: #ffc107;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    
+    .btn-success {
+      background-color: #28a745;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    
+    .btn-success:hover {
+      background-color: #218838;
+      transform: scale(1.02);
+    }
+    
+    /* FOOTER — transparent background, no black */
+    .footer {
+      background-color: transparent !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+      font-size: 0.9rem;
+      padding: 1.2rem 0;
+      margin-top: 2rem;
+      position: relative;
+      color: #f0f0f0;
+      backdrop-filter: blur(3px);
+    }
+    
+    /* footer content layout: center name + right 'About Us' using flex modern approach,
+       but keep the original design intent with no black background */
+    .footer .container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .footer .footer-center {
+      text-align: center;
+      font-weight: 500;
+    }
+    
+    .footer .footer-about {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.9;
+      cursor: pointer;
+    }
+    
+    .footer .footer-about:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+    
+    /* For small screens adjust absolute right */
+    @media (max-width: 576px) {
+      .footer .footer-about {
+        position: static;
+        transform: none;
+        text-align: center;
+        margin-top: 6px;
+      }
+      .footer .container {
+        flex-direction: column;
+      }
+      .overlay {
+        margin: 1rem;
+        padding: 2rem;
+      }
+      .hero {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+    
+    /* any other containers stay transparent */
+    .container, .row, .col-md-4 {
+      background-color: transparent;
+    }
+    
+    /* ensure no black areas anywhere */
+    section, div, footer, nav {
+      background-color: transparent;
+    }
+    
+    /* but we keep the card background translucent to maintain readability */
+    .card-body {
+      background-color: transparent;
+    }
+    
+    /* Additional: shop button in hero */
+    .btn-outline-custom {
+      background-color: #198754;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR - fully transparent -->
+<nav class="navbar navbar-expand-lg navbar-dark position-absolute w-100" style="background: transparent;">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" href="#">AfriPantry</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="overlay">
+    <h1 class="display-4 fw-bold">
+      Authentic African Pantry Essentials
+    </h1>
+
+    <p class="lead mt-3">
+      Premium ingredients imported directly from Africa
+    </p>
+
+    <button class="btn btn-success btn-lg mt-3 px-4">
+      Shop Products
+    </button>
+  </div>
+</section>
+
+<!-- PRODUCTS SECTION - transparent background, no black -->
+<section class="products-section">
+  <div class="container">
+    <h2 class="text-center mb-5">Featured Products</h2>
+
+    <div class="row g-4">
+
+      <!-- Product 1: Plantain Chips -->
+      <div class="col-md-4">
+        <div class="card text-white">
+          <img src="images/plantain_chips.JPG" class="card-img-top" alt="Plantain Chips">
+          <div class="card-body text-center">
+            <h5 class="card-title">Plantain Chips</h5>
+            <p class="card-text">$6.99</p>
+            <button class="btn btn-success">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2: Peanut Butter -->
+      <div class="col-md-4">
+        <div class="card text-white">
+          <img src="images/peanut_butter.JPG" class="card-img-top" alt="Peanut Butter">
+          <div class="card-body text-center">
+            <h5 class="card-title">Peanut Butter</h5>
+            <p class="card-text">$9.99</p>
+            <button class="btn btn-success">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3: Gari -->
+      <div class="col-md-4">
+        <div class="card text-white">
+          <img src="images/gari.jpg" class="card-img-top" alt="Gari">
+          <div class="card-body text-center">
+            <h5 class="card-title">Gari</h5>
+            <p class="card-text">$8.99</p>
+            <button class="btn btn-success">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER - completely transparent background with border light -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-center text-center">
+      <div class="opacity-75">Created by</div>
+      <div class="fw-semibold"> Sorel Agbogla</div>
+    </div>
+
+    <div class="footer-about">
+      About Us
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Additional check: ensure that any possible black background from browser defaults is gone -->
+</body>
+</html>
